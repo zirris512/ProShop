@@ -22,7 +22,8 @@
   "homepage": "https://github.com/zirris512/ProShop#readme",
   "dependencies": {
     "dotenv": "^8.2.0",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "mongoose": "^5.11.14"
   },
   "devDependencies": {
     "concurrently": "^5.3.0",
