@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Row, Col, ListGroup, Image, Form, Button, Card } from "react-bootstrap";
 import Message from "../components/Message";
-import { addToCart, removeFromCart } from "../actions/cartActions";
+import { addToCart, removeFromCart } from "../redux/actions/cartActions";
 
 const CartPage = ({ match, location, history }) => {
     const productId = match.params.id;
@@ -12,6 +12,7 @@ const CartPage = ({ match, location, history }) => {
     const dispatch = useDispatch();
     const cart = useSelector((state) => state.cart);
     const { cartItems } = cart;
+    console.log(cartItems);
 
     useEffect(() => {
         if (productId) {
