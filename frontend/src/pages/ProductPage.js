@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Row, Col, Image, ListGroup, Card, Button, Form } from "react-bootstrap";
-import { listProductDetails } from "../redux/actions/productActions";
 
+import { listProductDetails } from "../redux/actions/productActions";
 import Rating from "../components/Rating";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
