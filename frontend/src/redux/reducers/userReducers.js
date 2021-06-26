@@ -1,6 +1,7 @@
 export const userLoginReducer = {
     user_login_request: (state) => {
         state.loading = true;
+        state.error = null;
     },
     user_login_success: (state, { payload }) => {
         state.loading = false;
@@ -18,6 +19,7 @@ export const userLoginReducer = {
 export const userRegisterReducer = {
     user_register_request: (state) => {
         state.loading = true;
+        state.error = null;
     },
     user_register_success: (state, { payload }) => {
         state.loading = false;
@@ -32,6 +34,7 @@ export const userRegisterReducer = {
 export const userDetailsReducer = {
     user_details_request: (state) => {
         state.loading = true;
+        state.error = null;
     },
     user_details_success: (state, { payload }) => {
         state.loading = false;
@@ -46,6 +49,8 @@ export const userDetailsReducer = {
 export const userUpdateReducer = {
     user_update_request: (state) => {
         state.loading = true;
+        state.error = null;
+        state.success = false;
     },
     user_update_success: (state, { payload }) => {
         state.loading = false;
@@ -56,5 +61,5 @@ export const userUpdateReducer = {
         state.loading = false;
         state.error = payload;
     },
-    user_update_reset: (state) => {}
+    user_update_reset: (state) => {},
 };
