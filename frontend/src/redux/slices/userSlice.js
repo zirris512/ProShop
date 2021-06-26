@@ -1,6 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-import { userLoginReducer, userRegisterReducer } from "../reducers/userReducers";
+import {
+    userLoginReducer,
+    userRegisterReducer,
+    userDetailsReducer,
+} from "../reducers/userReducers";
 
 const userFromStorage = localStorage.getItem("userInfo")
     ? JSON.parse(localStorage.getItem("userInfo"))
@@ -11,6 +15,9 @@ const initialUserState = {
 };
 const initialUserRegisterState = {
     userInfo: null,
+};
+const initialUserDetailsState = {
+    user: {},
 };
 
 export const userSlice = createSlice({
@@ -23,8 +30,15 @@ export const userRegisterSlice = createSlice({
     initialState: initialUserRegisterState,
     reducers: userRegisterReducer,
 });
+export const userDetailsSlice = createSlice({
+    name: "userDetails",
+    initialState: initialUserDetailsState,
+    reducers: userDetailsReducer,
+});
 
 export const { user_login_request, user_login_success, user_login_fail, user_logout } =
     userSlice.actions;
 export const { user_register_request, user_register_success, user_register_fail } =
     userRegisterSlice.actions;
+export const { user_details_request, user_details_success, user_details_fail } =
+    userDetailsSlice.actions;

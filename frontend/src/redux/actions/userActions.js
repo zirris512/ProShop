@@ -8,6 +8,9 @@ import {
     user_register_request,
     user_register_success,
     user_register_fail,
+    user_details_request,
+    user_details_success,
+    user_details_fail,
 } from "../slices/userSlice";
 
 export const login = (email, password) => async (dispatch) => {
@@ -51,9 +54,36 @@ export const register = (name, email, password) => async (dispatch) => {
 
         dispatch(user_register_success(data));
         dispatch(user_login_success(data));
+
+        localStorage.setItem("userInfo", JSON.stringify(data));
     } catch (err) {
         dispatch(
             user_register_fail(err.response?.data.message ? err.response.data.message : err.message)
+        );
+    }
+};
+
+export const getUserDetails = (id) => async (dispatch, getState) => {
+    try {
+        dispatch(user_details_request());
+
+        const {
+            userLogin: { userInfo },
+        } = getState();
+
+        const config = {
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${userInfo.token}`,
+            },
+        };
+
+        const { data } = await axios.get(`/api/users/${id}`, config);
+
+        dispatch(user_details_success(data));
+    } catch (err) {
+        dispatch(
+            user_details_fail(err.response?.data.message ? err.response.data.message : err.message)
         );
     }
 };

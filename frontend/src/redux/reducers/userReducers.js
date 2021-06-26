@@ -28,3 +28,17 @@ export const userRegisterReducer = {
         state.error = payload;
     },
 };
+
+export const userDetailsReducer = {
+    user_details_request: (state) => {
+        state.loading = true;
+    },
+    user_details_success: (state, { payload }) => {
+        state.loading = false;
+        state.user = payload;
+    },
+    user_details_fail: (state, { payload }) => {
+        state.loading = false;
+        state.error = payload;
+    },
+};
