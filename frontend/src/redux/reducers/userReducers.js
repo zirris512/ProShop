@@ -42,3 +42,19 @@ export const userDetailsReducer = {
         state.error = payload;
     },
 };
+
+export const userUpdateReducer = {
+    user_update_request: (state) => {
+        state.loading = true;
+    },
+    user_update_success: (state, { payload }) => {
+        state.loading = false;
+        state.success = true;
+        state.userInfo = payload;
+    },
+    user_update_fail: (state, { payload }) => {
+        state.loading = false;
+        state.error = payload;
+    },
+    user_update_reset: (state) => {}
+};

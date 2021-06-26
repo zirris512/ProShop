@@ -11,6 +11,9 @@ import {
     user_details_request,
     user_details_success,
     user_details_fail,
+    user_update_request,
+    user_update_success,
+    user_update_fail,
 } from "../slices/userSlice";
 
 export const login = (email, password) => async (dispatch) => {
@@ -84,6 +87,31 @@ export const getUserDetails = (id) => async (dispatch, getState) => {
     } catch (err) {
         dispatch(
             user_details_fail(err.response?.data.message ? err.response.data.message : err.message)
+        );
+    }
+};
+
+export const updateUserProfile = (user) => async (dispatch, getState) => {
+    try {
+        dispatch(user_update_request());
+
+        const {
+            userLogin: { userInfo },
+        } = getState();
+
+        const config = {
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${userInfo.token}`,
+            },
+        };
+
+        const { data } = await axios.put(`/api/users/profile`, user, config);
+
+        dispatch(user_update_success(data));
+    } catch (err) {
+        dispatch(
+            user_update_fail(err.response?.data.message ? err.response.data.message : err.message)
         );
     }
 };
