@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Message from "../components/Message";
 import Loader from "../components/Loader";
 import { getUserDetails, updateUserProfile } from "../redux/actions/userActions";
+import { user_update_reset } from "../redux/slices/userSlice";
 
 const ProfilePage = ({ location, history }) => {
     const [message, setMessage] = useState(null);
@@ -29,7 +30,8 @@ const ProfilePage = ({ location, history }) => {
         if (!userInfo) {
             history.push("/login");
         } else {
-            if (!user.name) {
+            if (!user?.name) {
+                dispatch(user_update_reset());
                 dispatch(getUserDetails("profile"));
             } else {
                 setName(user.name);

@@ -61,5 +61,7 @@ export const userUpdateReducer = {
         state.loading = false;
         state.error = payload;
     },
-    user_update_reset: (state) => {},
+    user_update_reset: (state) => {
+        state.userInfo = {};
+    },
 };
