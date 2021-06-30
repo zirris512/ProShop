@@ -16,4 +16,7 @@ export const cartReducers = {
     cart_save_shipping_address: (state, { payload }) => {
         state.shippingAddress = payload;
     },
+    cart_save_payment_method: (state, { payload }) => {
+        state.paymentMethod = payload;
+    },
 };
