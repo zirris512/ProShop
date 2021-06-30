@@ -13,4 +13,7 @@ export const cartReducers = {
     remove_item: (state, { payload }) => {
         state.cartItems = state.cartItems.filter((x) => x.product !== payload);
     },
+    cart_save_shipping_address: (state, { payload }) => {
+        state.shippingAddress = payload;
+    },
 };
