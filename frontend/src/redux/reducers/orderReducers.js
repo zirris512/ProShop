@@ -16,4 +16,17 @@ export const orderCreateReducer = {
     },
 };
 
-export const orderDetailsReducer = {};
+export const orderDetailsReducer = {
+    order_details_request: (state) => {
+        state.loading = true;
+        state.error = null;
+    },
+    order_details_success: (state, { payload }) => {
+        state.loading = false;
+        state.order = payload;
+    },
+    order_details_fail: (state, { payload }) => {
+        state.loading = false;
+        state.error = payload;
+    },
+};
