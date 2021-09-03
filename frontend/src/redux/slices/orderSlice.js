@@ -6,8 +6,8 @@ const initialCreateOrderState = {
     order: {},
 };
 const initialOrderDetailsState = {
-    orderItems: [],
-    shippingAddress: {},
+    order: {},
+    loading: true,
 };
 
 export const createOrderSlice = createSlice({
