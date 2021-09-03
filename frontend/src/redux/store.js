@@ -8,6 +8,7 @@ import {
     userDetailsSlice,
     userUpdateSlice,
 } from "./slices/userSlice";
+import { orderSlice } from "./slices/orderSlice";
 
 const store = configureStore({
     reducer: {
@@ -18,6 +19,7 @@ const store = configureStore({
         userRegister: userRegisterSlice.reducer,
         userDetails: userDetailsSlice.reducer,
         userUpdate: userUpdateSlice.reducer,
+        orderCreate: orderSlice.reducer,
     },
 });
 
